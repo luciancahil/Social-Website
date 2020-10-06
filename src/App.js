@@ -21,9 +21,9 @@ function App() {
           <Route path="/login" component={Login} />
           <Route path="/search" component={Searching} />
         </div>
+        
     </Router>
   );
 }
-// /            <Route path="/" exact render={(props) => <HomePage {...props} username = {this.state.username} chageUser = {this.changeUser} randomSession = {this.state.randomSession} quickStart = {this.quickStart}/>} />
 
 export default App;

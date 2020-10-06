@@ -94,3 +94,24 @@ nav a:active{
 nav #navlinks{
   float: right;
 }
+
+html{
+  background-color: #f9f9f9;
+  height: 100%;
+}
+
+
+
+
+html, body, #root{
+  height: 100%;
+}
+
+#content{
+  width: 80%;
+  margin: auto;
+  background-color: white;
+  height: 100%;
+  margin-top: 0;
+  overflow: auto;
+}
