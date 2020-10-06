@@ -11,6 +11,7 @@ class NavBar extends React.Component {
 
     this.goSearch = this.goSearch.bind(this);
     this.updateSearch = this.updateSearch.bind(this);
+    this.purge = this.purge.bind(this);
   }
 
   updateSearch(e){
@@ -21,11 +22,21 @@ class NavBar extends React.Component {
     })
   }
 
+  //runs when the enter key is hit in the search bar
   goSearch(e){
     if(e.keyCode===13){
-      alert('you entered ' + this.state.search)
+      window.location.href = 'search?search=' + this.purge(this.state.search);
     }
   }
+
+  // remove undesireable characters
+  purge(str){
+    let purged = str.replace(" ", "+");
+    purged = purged.replace("&", "%26");
+
+    return purged;
+  }
+
 
 
   render() {
