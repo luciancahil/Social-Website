@@ -48,3 +48,49 @@
   display: inline-block;
 }
 
+nav{
+  background-color: #000080;
+  padding: 10px;
+}
+
+nav .md-form.mt-0{
+  display:inline-flex;
+  width:500px;
+}
+
+nav .md-form.mt-0 input{
+  padding-left: 25px;
+}
+
+nav #search{
+  margin: 20px;
+}
+
+nav .material-icons.mdc-button__icon{
+  top: 20px;
+  left: 10px;
+ 
+}
+
+nav div{
+  display: inline-block;
+}
+
+nav input{
+  outline: none;
+  border-radius: 7px;
+}
+
+nav a{
+  color: white;
+  padding: 0 10px;
+  text-decoration: none;
+}
+
+nav a:active{
+  color: red;
+}
+
+nav #navlinks{
+  float: right;
+}
