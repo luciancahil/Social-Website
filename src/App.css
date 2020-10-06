@@ -84,6 +84,11 @@ nav input{
 nav a{
   color: white;
   padding: 0 10px;
+  text-decoration: none;
+}
+
+nav a:active{
+  color: red;
 }
 
 nav #navlinks{

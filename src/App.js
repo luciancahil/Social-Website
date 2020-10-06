@@ -1,17 +1,24 @@
 import React from 'react';
 import './App.css';
+import { BrowserRouter as Router, Route} from "react-router-dom";
 import Userpage from './Components/Userpage.component';
 import NavBar from './Components/Navbar.component';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import Login from './Components/Login.component';
+import Signup from './Components/SignUp.component';
+
 
 
 
 function App() {
   return (
     <Router>
-        <Route path = "/" exact compontent = {<NavBar/>}/>
-        <Route path = "/user" exact compontent = {<Userpage/>}/>
-
+        <NavBar/>
+        <div id = "content">
+          <Route path="/user" component={Userpage} />
+          <Route path="/signup" compontent={Signup}/>
+          <Route path="/signup" component={Signup} />
+          <Route path="/login" component={Login} />
+        </div>
     </Router>
   );
 }
