@@ -77,7 +77,8 @@ nav div{
 }
 
 nav input{
-  outline:none;
+  outline: none;
+  border-radius: 7px;
 }
 
 nav a{
