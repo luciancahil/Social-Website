@@ -48,3 +48,17 @@
   display: inline-block;
 }
 
+.md-form.mt-0{
+  display:inline-flex;
+  width:500px;
+}
+.md-form.mt-0 input{
+  padding-left: 25px;
+}
+.material-icons.mdc-button__icon{
+  position:absolute;
+  top:7px;
+  left: 2px;
+ 
+}
+
