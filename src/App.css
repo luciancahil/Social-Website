@@ -48,17 +48,43 @@
   display: inline-block;
 }
 
-.md-form.mt-0{
+nav{
+  background-color: #000080;
+  padding: 10px;
+}
+
+nav .md-form.mt-0{
   display:inline-flex;
   width:500px;
 }
-.md-form.mt-0 input{
+
+nav .md-form.mt-0 input{
   padding-left: 25px;
 }
-.material-icons.mdc-button__icon{
-  position:absolute;
-  top:7px;
-  left: 2px;
+
+nav #search{
+  margin: 20px;
+}
+
+nav .material-icons.mdc-button__icon{
+  top: 20px;
+  left: 10px;
  
 }
 
+nav div{
+  display: inline-block;
+}
+
+nav input{
+  outline:none;
+}
+
+nav a{
+  color: white;
+  padding: 0 10px;
+}
+
+nav #navlinks{
+  float: right;
+}
