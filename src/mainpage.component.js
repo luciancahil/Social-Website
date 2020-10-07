@@ -16,6 +16,8 @@ class MainPage extends React.Component {
       username: "",
       password: ""
     };
+
+    this.changeUser = this.changeUser.bind(this);
   }
 
   changeUser(uName, pWord){
@@ -23,6 +25,9 @@ class MainPage extends React.Component {
       username: uName,
       password: pWord
     })
+
+    console.log("uName");
+    console.log("pWord");
   }
 
   render(){
@@ -34,7 +39,7 @@ class MainPage extends React.Component {
             <Route path="/user" component={Userpage} />
             <Route path="/signup" compontent={Signup}/>
             <Route path="/signup" component={Signup} />
-            <Route path="/login" component={Login} />
+            <Route path="/login" render={(props) => <Login {...props} changeUser = {this.changeUser}/>} />
             <Route path="/search" component={Searching} />
           </div>
           
@@ -42,5 +47,9 @@ class MainPage extends React.Component {
     );
   }
 }
+
+// <Route path="/login" render={(props) => <Login {...props} username = {this.state.username} chageUser = {this.changeUser} randomSession = {this.state.randomSession} quickStart = {this.quickStart}/>} />
+// <Route path="/login" render={(props) => <Login {...props} chageUser = {this.changeUser}/>
+
 
 export default MainPage;

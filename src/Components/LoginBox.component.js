@@ -5,6 +5,8 @@ import LoginError from './loginerror.component'
 class LoginBox extends React.Component {
     constructor(props){
         super(props);
+        console.log(this.props);
+
         
         this.onSubmit = this.onSubmit.bind(this);
         this.onChangeUsername = this.onChangeUsername.bind(this);
