@@ -36,7 +36,7 @@ class LoginBox extends React.Component {
         e.preventDefault();
         let userN = this.state.login_username;
         let passW = this.state.login_password;
-        let fetchURL = "http://weight.wwtbe.nl/login?username=" + userN + "&password=" + passW;
+        let fetchURL = "https://social.twgxe.net/login?username=" + userN + "&password=" + passW;
 
 
         fetch(fetchURL)
