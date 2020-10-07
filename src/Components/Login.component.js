@@ -1,8 +1,9 @@
 import React from 'react';
+import LoginBox from './LoginBox.component';
 
 class Login extends React.Component {
   render() {
-    return <h2>Login Page</h2>;
+    return <LoginBox/>;
   }
 }
 
