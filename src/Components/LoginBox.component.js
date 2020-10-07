@@ -42,11 +42,13 @@ class LoginBox extends React.Component {
         fetch(fetchURL)
             .then((response) => response.text())
             .then((text) => {
+                console.log(text);
+
                 this.setState({
                     login_status: text
                 })
-                if(this.state.login_status === "Granted"){
-                    this.props.chageUser(userN, passW);
+                if(this.state.login_status === "granted"){
+                    this.props.changeUser(userN, passW);
                     window.history.pushState('page2', 'Title', '/home');
                     
                 }
