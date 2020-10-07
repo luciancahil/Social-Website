@@ -18,39 +18,39 @@ class LoginError extends React.Component {
         const duplicateUser = "Error! That username is already in use";
         const noError = "none";
         
-        if(this.props.type == "Denied"){
-            if(this.state.error_message != wrongPass){
+        if(this.props.type === "Denied"){
+            if(this.state.error_message !== wrongPass){
                 this.setState({error_message: wrongPass});
             }
-        } else if(this.props.type == "Unfound"){
-            if(this.state.error_message != notRegistered){
+        } else if(this.props.type === "Unfound"){
+            if(this.state.error_message !== notRegistered){
                 this.setState({error_message: notRegistered});
             }
-        }else if(this.props.type == "shortUser"){
-            if(this.state.error_message != shortUser){
+        }else if(this.props.type === "shortUser"){
+            if(this.state.error_message !== shortUser){
                 this.setState({error_message: shortUser});
             }
-        }else if(this.props.type == "unmatched"){
-            if(this.state.error_message != unmatchedPasswords){
+        }else if(this.props.type === "unmatched"){
+            if(this.state.error_message !== unmatchedPasswords){
                 this.setState({error_message: unmatchedPasswords});
             }
-        }else if(this.props.type == "shortPass"){
-            if(this.state.error_message != shortPassword){
+        }else if(this.props.type === "shortPass"){
+            if(this.state.error_message !== shortPassword){
                 this.setState({error_message: shortPassword});
             }
-        }else if(this.props.type == "duplicate"){
-            if(this.state.error_message != duplicateUser){
+        }else if(this.props.type === "duplicate"){
+            if(this.state.error_message !== duplicateUser){
                 this.setState({error_message: duplicateUser});
             }
         }else{
-            if(this.state.error_message != noError){
+            if(this.state.error_message !== noError){
                 this.setState({error_message: noError});
             }
         }
     }
 
     render() {
-        if(this.state.error_message == "none"){
+        if(this.state.error_message === "none"){
             return null;
         }
 

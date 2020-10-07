@@ -18,9 +18,6 @@ class SignUpBox extends React.Component {
         signup_password_two: "",
         signup_status: ""
     };
-    if(sessionStorage.getItem(this.props.randomSession + "username") !== null){
-        props.quickStart(sessionStorage.getItem(this.props.randomSession + "username"))
-    }
   }
   
   onChangeUsername(e){
@@ -88,7 +85,7 @@ class SignUpBox extends React.Component {
                 })
 
                 console.log(text);
-                if(this.state.signup_status == "inserted"){
+                if(this.state.signup_status === "inserted"){
                     window.location.href = "/signedup";
                 }
             })
