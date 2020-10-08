@@ -31,7 +31,7 @@ class Questions extends React.Component {
         return ints;
     }
 
-    renderQuestion = (index) => <Question key = {index} index = {index} q = {this.state.questionArray[index]} updateAnswers ={this.updateAnswers}/>
+    renderQuestion = (index) => <Question key = {index + " " + this.state.answerArray[index]} index = {index} q = {this.state.questionArray[index]} a = {this.state.answerArray[index]} updateAnswers ={this.updateAnswers}/>
 
 
     updateAnswers(index, text){
@@ -92,7 +92,7 @@ class Questions extends React.Component {
                     question = this.state.questionArray[i];
                     answer = QnAObj[question];
 
-                    if(answer != undefined){
+                    if(answer !== undefined){
                         this.state.answerArray[i] = answer;
                     }
                 }

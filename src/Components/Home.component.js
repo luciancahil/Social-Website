@@ -1,5 +1,4 @@
 import React from 'react';
-import Questions from './Questions.component'
 import Content from './HomeContent.components'
 
 

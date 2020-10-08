@@ -20,7 +20,7 @@ class Question extends React.Component {
             <div className = "Question">
                 <p>{this.props.q}</p>
                 <div className = "Input">
-                    <input type = "text" onChange = {this.updateText}></input>
+                    <input type = "text" onChange = {this.updateText} defaultValue = {this.props.a}></input>
                 </div>
             </div>
             
