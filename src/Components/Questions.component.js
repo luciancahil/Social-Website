@@ -70,6 +70,18 @@ class Questions extends React.Component {
         })
     }
 
+    //getQnA?username=dummy&password=dummy1
+
+    componentDidMount(){
+        let user = localStorage.getItem("username");
+        let pass = localStorage.getItem("password");
+
+        let fetchURL = "https://social.twgxe.net/getQnA?username=" + user + "&password=" + pass;
+
+        console.log(fetchURL);
+
+    }
+
     render() {
         return (
             <div id = "Question Section">
