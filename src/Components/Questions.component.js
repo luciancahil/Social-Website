@@ -18,6 +18,7 @@ class Questions extends React.Component {
         this.renderQuestion = this.renderQuestion.bind(this);
         this.updateServer = this.updateServer.bind(this);
         this.updateAnswers = this.updateAnswers.bind(this);
+        this.sendCommand = this.sendCommand.bind(this);
     }
 
     getIndexArray(array){
@@ -56,33 +57,18 @@ class Questions extends React.Component {
             }
 
             fetchURL = "https://social.twgxe.net/addQnA?username=" + user + "&password=" + pass +  "&question=" + question + "&answer=" + answer;
-            console.log(fetchURL);
+            this.sendCommand(fetchURL);
         }
-/*
-        fetch(fetchURL)
-            .then((response) => response.text())
-            .then((text) => {
-                console.log(text);
+    }
 
-                this.setState({
-                    login_status: text
-                })
-                if(this.state.login_status === "granted"){
-                    this.props.changeUser(userN, passW);
-                    window.location.href = "/home";
-                    
-                }
-            })*/
-        
-        /*
-        for(let i = 0; i < this.state.questionArray.length; i++){
-            if(this.state.answerArray[i] != undefined){
-                let part = this.state.questionArray[i] + "\n" + this.state.answerArray[i] + "\n\n";
-                this.state.info += part;
+    async sendCommand(fetchURL){
+        await fetch(fetchURL)
+        .then((response) => response.text())
+        .then((text) => {
+            if(text !== "inserted"){
+                console.log("error with " + fetchURL);
             }
-        }
-
-        this.download(this.state.info, "information.txt");*/
+        })
     }
 
     render() {
