@@ -1,4 +1,6 @@
 import React from 'react';
+import Questions from './Questions.component'
+import Content from './HomeContent.components'
 
 
 class Home extends React.Component {
@@ -11,7 +13,6 @@ class Home extends React.Component {
     }
 
     componentDidMount(){
-        console.log(this.props.login_status);
 
         if(this.props.login_status === "You are logged in"){
             let newText = "Hello " + localStorage.getItem("username");
@@ -23,7 +24,14 @@ class Home extends React.Component {
     }
 
     render() {
-        return <h2>{this.state.text}</h2>;
+        return (
+            <div id = "home">
+                <h2>{this.state.text}</h2>
+                <Content key = {this.state.text} login_status = {this.state.text}/>
+            </div>
+        );
+
+        
     }
 }
 
