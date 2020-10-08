@@ -27,7 +27,7 @@ class Home extends React.Component {
         return (
             <div id = "home">
                 <h2>{this.state.text}</h2>
-                <Content key = {this.state.text} login_status = {this.state.text}/>
+                <Content key = {this.props.login_status} login_status = {this.props.login_status}/>
             </div>
         );
 
