@@ -75,15 +75,29 @@ class Questions extends React.Component {
     componentDidMount(){
         let user = localStorage.getItem("username");
         let pass = localStorage.getItem("password");
+        let QnAObj;
+        let question;
+        let answer;
 
         let fetchURL = "https://social.twgxe.net/getQnA?username=" + user + "&password=" + pass;
 
         fetch(fetchURL)
             .then((response) => response.text())
             .then((text) => {
-                let QnA = JSON.parse(text);
-                console.log(QnA[this.state.questionArray[0]]);
+                QnAObj = JSON.parse(text);
+                
+                console.log(QnAObj[this.state.questionArray[0]]);
+
+                for(let i = 0; i < this.state.questionArray.length; i++){
+                    question = this.state.questionArray[i];
+                    answer = QnAObj[question];
+
+                    if(answer != undefined){
+                        this.state.answerArray[i] = answer;
+                    }
+                }
             })
+            .then(console.log(this.state.answerArray));
     }
 
     render() {
