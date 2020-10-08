@@ -82,7 +82,12 @@ componentDidMount(){
       bigInfo += aArray[i] + "\n\n"
     }
 
-    console.log(bigInfo);
+    this.setState({info: bigInfo}, () => {
+      this.download(this.state.info, "information.txt");
+    })
+
+    //console.log(bigInfo);
+    //console.log(this.state.info);
 
     //this.download(this.state.info, "information.txt");
   }
