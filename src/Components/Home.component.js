@@ -35,7 +35,7 @@ class Home extends React.Component {
                     <h2>{this.state.text}</h2>
                 </div>
                 <div id = "homeEditButton">
-                    <button>Edit</button>
+                    <a href ="/edit" ><button>Edit</button></a>
                 </div>
                 <br/>
                 <Content/>

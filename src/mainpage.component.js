@@ -7,6 +7,7 @@ import Signup from './Components/SignUp.component';
 import Searching from './Components/Searching.components';
 import Signout from './Components/Signout.component';
 import Home from './Components/Home.component'
+import Edit from './Components/Edit.component'
 
 
 class MainPage extends React.Component { 
@@ -104,6 +105,7 @@ class MainPage extends React.Component {
             <Route path="/signout" render={(props) => <Signout {...props} clearUser = {this.clearUser}/>} />
             <Route path="/home" render={(props) => <Home {...props} login_status = {this.state.loggedIn} key = {this.state.loggedIn} />} />
             <Route path="/search" component={Searching} />
+            <Route path="/edit" component={Edit} />
           </div>
           
       </Router>
