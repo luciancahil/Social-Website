@@ -7,6 +7,7 @@ class HomeContent extends React.Component {
   constructor(props){
     super(props);
 
+
     this.state = {
       questionArray : data.Qs,
       indexArray : this.getIndexArray(data.Qs),
@@ -14,7 +15,8 @@ class HomeContent extends React.Component {
       info: ""
     }
 
-    console.log(this.state.indexArray);
+    this.setDownload = this.setDownload.bind(this);
+    this.download = this.download.bind();
   }
 
   getIndexArray(array){
@@ -30,46 +32,63 @@ class HomeContent extends React.Component {
   renderQuestion = (index) => <QnA key = {index + " " + this.state.answerArray[index]} index = {index} q = {this.state.questionArray[index]} a = {this.state.answerArray[index]}/>
 
   // sets default Values of editing page with previous values
-  componentDidMount(){
-    let user = localStorage.getItem("username");
-    let pass = localStorage.getItem("password");
-    let QnAObj;
-    let question;
-    let answer;
-    let newAnswerArray = [];
-    let fetchURL = "https://social.twgxe.net/getQnA?username=" + user + "&password=" + pass;
+componentDidMount(){
+  let user = localStorage.getItem("username");
+  let pass = localStorage.getItem("password");
+  let QnAObj;
+  let question;
+  let answer;
+  let newAnswerArray = [];
+  let fetchURL = "https://social.twgxe.net/getQnA?username=" + user + "&password=" + pass;
 
-    fetch(fetchURL)
-        .then((response) => response.text())
-        .then((text) => {
-            QnAObj = JSON.parse(text);
-            
-            console.log(QnAObj[this.state.questionArray[0]]);
+  fetch(fetchURL)
+      .then((response) => response.text())
+      .then((text) => {
+          QnAObj = JSON.parse(text);
+          
 
-            for(let i = 0; i < this.state.questionArray.length; i++){
-                question = this.state.questionArray[i];
-                answer = QnAObj[question];
+          for(let i = 0; i < this.state.questionArray.length; i++){
+              question = this.state.questionArray[i];
+              answer = QnAObj[question];
 
-                if(answer !== undefined){
-                    newAnswerArray[i] = answer;
-                }
-            }
+              if(answer !== undefined){
+                  newAnswerArray[i] = answer;
+              }
+          }
 
-            this.setState({
-                answerArray: newAnswerArray
-            })
-        })
-        .then(console.log(this.state.answerArray));
-    }
-  
+          this.setState({
+              answerArray: newAnswerArray
+          })
+      })
+  }
+
+  download(content, filename, contentType){
+    if(!contentType) contentType = 'application/octet-stream';
+        var a = document.createElement('a');
+        var blob = new Blob([content], {'type':contentType});
+        a.href = window.URL.createObjectURL(blob);
+        a.download = filename;
+        a.click();
+  }
+
+
+  setDownload(){
+    console.log("hi button");
+    //this.download(this.state.info, "information.txt");
+  }
+
   render() {
     return (
       <div id = "homeContent">
+        
         <div id = "QnA">
           {this.state.indexArray.map(this.renderQuestion)}
         </div>
         <br/>
+        <button onClick = {this.setDownload}>Download</button>
       </div>
+
+      
     );
   }
 }
