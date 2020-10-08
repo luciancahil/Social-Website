@@ -58,6 +58,7 @@ class NavBar extends React.Component {
             </div>
 
             <div id = "navlinks">
+                <a href = "/home">Home</a>
                 <a href = {this.state.leftLink}>{this.state.leftText}</a>
                 <a href = "/signup">Sign up</a>
             </div>
