@@ -41,7 +41,6 @@ class NavBar extends React.Component {
   }
 
   componentDidMount(){
-    console.log("hi! " + this.props.login_status);
     if(this.props.login_status === "You are logged in"){
       this.setState({
         leftText: "Sign out",

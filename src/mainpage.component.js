@@ -5,7 +5,7 @@ import NavBar from './Components/Navbar.component';
 import Login from './Components/Login.component';
 import Signup from './Components/SignUp.component';
 import Searching from './Components/Searching.components';
-
+import Signout from './Components/Signout.component';
 
 
 class MainPage extends React.Component { 
@@ -19,6 +19,7 @@ class MainPage extends React.Component {
     this.quickLogin = this.quickLogin.bind(this);
     this.fetchLogin = this.quickLogin.bind(this);
     this.changeUser = this.changeUser.bind(this);
+    this.clearUser = this.clearUser.bind(this);
   }
 
   //logs in immediately if local storage contains a username and password
@@ -78,8 +79,15 @@ class MainPage extends React.Component {
     })
   }
 
+  clearUser(){
+    window.localStorage.clear();
+
+    this.setState({
+      loggedIn: "You are not logged in"
+    })
+  }
+
   render(){
-    console.log(this.state.loggedIn);
 
     return (
       <Router>
@@ -88,11 +96,11 @@ class MainPage extends React.Component {
           
 
           <div id = "content">
-            <p>{this.state.loggedIn}</p>
             <Route path="/user" component={Userpage} />
             <Route path="/signup" compontent={Signup}/>
             <Route path="/signup" component={Signup} />
             <Route path="/login" render={(props) => <Login {...props} changeUser = {this.changeUser}/>} />
+            <Route path="/signout" render={(props) => <Signout {...props} clearUser = {this.clearUser}/>} />
             <Route path="/search" component={Searching} />
           </div>
           
