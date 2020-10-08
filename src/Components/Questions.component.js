@@ -1,7 +1,6 @@
 import React from 'react';
 import data from './Questions.json';
 import Question from './Question.component';
-import { findRenderedDOMComponentWithClass } from 'react-dom/test-utils';
 
 class Questions extends React.Component {
     constructor(props){
@@ -40,9 +39,40 @@ class Questions extends React.Component {
 
 
     updateServer(){
+        let pass = localStorage.getItem("password");
+        let user = localStorage.getItem("username");
+        
+        let fetchURL;
+        //https://social.twgxe.net/addQnA?username=dummy&password=dummy1&question=what+is+your+name?&answer=dummy
+
+
         for(let i = 0; i < this.state.answerArray.length; i++){
-            console.log(this.state.questionArray[i] + ", " + this.state.answerArray[i]);
+            let question = this.state.questionArray[i];
+            let answer = this.state.answerArray[i];
+            console.log(question);
+
+            if(answer === undefined){
+                continue;
+            }
+
+            fetchURL = "https://social.twgxe.net/addQnA?username=" + user + "&password=" + pass +  "&question=" + question + "&answer=" + answer;
+            console.log(fetchURL);
         }
+/*
+        fetch(fetchURL)
+            .then((response) => response.text())
+            .then((text) => {
+                console.log(text);
+
+                this.setState({
+                    login_status: text
+                })
+                if(this.state.login_status === "granted"){
+                    this.props.changeUser(userN, passW);
+                    window.location.href = "/home";
+                    
+                }
+            })*/
         
         /*
         for(let i = 0; i < this.state.questionArray.length; i++){
