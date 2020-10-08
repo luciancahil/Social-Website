@@ -73,7 +73,17 @@ componentDidMount(){
 
 
   setDownload(){
-    console.log("hi button");
+    let bigInfo;    //stores the text that will get printed out
+    let qArray = this.state.questionArray;
+    let aArray = this.state.answerArray;
+
+    for(let i = 0; i < qArray.length; i++){
+      bigInfo += qArray[i] + "\n";
+      bigInfo += aArray[i] + "\n\n"
+    }
+
+    console.log(bigInfo);
+
     //this.download(this.state.info, "information.txt");
   }
 
