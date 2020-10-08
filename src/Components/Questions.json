@@ -1,7 +1,21 @@
 {
     "Qs":[ 
-        "What's Your Name?", 
-        "Are you Married?", 
-        "How old are you?" 
+        "What's your first name?", 
+        "What's your last name",
+        "How old are you?",
+        "What is your gender identity",
+        "What disabilities/illnesses do you have, if any?",
+        "What diplomas/certifications do you have, if any?",
+        "What is your employment status?",
+        "Do you receive any form of income assistance or disability benefits?",
+        "Please tell us about your living situation: ",
+        "Are you married?",
+        "How many dependants do you have (Enter 0 for none)",
+        "Do you own a vehicle, and if so what kind?",
+        "How much cash do you have on hand?",
+        "How much money is in your chequing/savings account (enter n/a if you don't have a checking or savings account)?",
+        "What kinds of property do you own (if none, enter none)?",
+        "Do you own stocks, and if so, how much?",
+        "How much do you spend a month on lights/rent/food/unitils?"
     ]
 }
