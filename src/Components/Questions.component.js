@@ -1,6 +1,7 @@
 import React from 'react';
 import data from './Questions.json';
 import Question from './Question.component';
+import { findRenderedDOMComponentWithClass } from 'react-dom/test-utils';
 
 class Questions extends React.Component {
     constructor(props){
@@ -16,8 +17,7 @@ class Questions extends React.Component {
         }
 
         this.renderQuestion = this.renderQuestion.bind(this);
-        this.download = this.download.bind(this);
-        this.setDownload = this.setDownload.bind(this);
+        this.updateServer = this.updateServer.bind(this);
         this.updateAnswers = this.updateAnswers.bind(this);
     }
 
@@ -38,17 +38,13 @@ class Questions extends React.Component {
         this.state.answerArray[index] = text;
     }
 
-    download(content, filename, contentType){
-        if(!contentType) contentType = 'application/octet-stream';
-            var a = document.createElement('a');
-            var blob = new Blob([content], {'type':contentType});
-            a.href = window.URL.createObjectURL(blob);
-            a.download = filename;
-            a.click();
-    }
 
-
-    setDownload(){
+    updateServer(){
+        for(let i = 0; i < this.state.answerArray.length; i++){
+            console.log(this.state.questionArray[i] + ", " + this.state.answerArray[i]);
+        }
+        
+        /*
         for(let i = 0; i < this.state.questionArray.length; i++){
             if(this.state.answerArray[i] != undefined){
                 let part = this.state.questionArray[i] + "\n" + this.state.answerArray[i] + "\n\n";
@@ -56,7 +52,7 @@ class Questions extends React.Component {
             }
         }
 
-        this.download(this.state.info, "information.txt");
+        this.download(this.state.info, "information.txt");*/
     }
 
     render() {
@@ -67,7 +63,7 @@ class Questions extends React.Component {
                     {this.state.indexArray.map(this.renderQuestion)}
                 </div>
                 <br/>
-                <button onClick = {this.setDownload}>Download Information</button>
+                <button onClick = {this.updateServer}>Download Information</button>
                 <br></br>
             </div>
         );
