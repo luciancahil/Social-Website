@@ -62,12 +62,12 @@ class Questions extends React.Component {
 
     async sendCommand(fetchURL){
         await fetch(fetchURL)
-        .then((response) => response.text())
-        .then((text) => {
-            if(text !== "inserted"){
-                console.log("error with " + fetchURL);
-            }
-        })
+            .then((response) => response.text())
+            .then((text) => {
+                if(text !== "inserted"){
+                    console.log("error with " + fetchURL);
+                }
+            })
     }
 
     //getQnA?username=dummy&password=dummy1
@@ -78,8 +78,12 @@ class Questions extends React.Component {
 
         let fetchURL = "https://social.twgxe.net/getQnA?username=" + user + "&password=" + pass;
 
-        console.log(fetchURL);
-
+        fetch(fetchURL)
+            .then((response) => response.text())
+            .then((text) => {
+                let QnA = JSON.parse(text);
+                console.log(QnA[this.state.questionArray[0]]);
+            })
     }
 
     render() {
