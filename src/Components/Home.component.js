@@ -8,6 +8,7 @@ class Home extends React.Component {
 
         this.state = {
             text: "You are not logged in"
+            
         }
     }
 

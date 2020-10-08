@@ -9,8 +9,6 @@ class QnA extends React.Component {
             <p>{this.props.a}</p>
             <br/>
             <br/>
-            <br/>
-            <br/>
         </div>
     )
   }

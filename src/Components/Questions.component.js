@@ -70,15 +70,14 @@ class Questions extends React.Component {
             })
     }
 
-    //getQnA?username=dummy&password=dummy1
-
+    // sets default Values of editing page with previous values
     componentDidMount(){
         let user = localStorage.getItem("username");
         let pass = localStorage.getItem("password");
         let QnAObj;
         let question;
         let answer;
-
+        let newAnswerArray = [];
         let fetchURL = "https://social.twgxe.net/getQnA?username=" + user + "&password=" + pass;
 
         fetch(fetchURL)
@@ -93,11 +92,14 @@ class Questions extends React.Component {
                     answer = QnAObj[question];
 
                     if(answer !== undefined){
-                        this.state.answerArray[i] = answer;
+                        newAnswerArray[i] = answer;
                     }
                 }
+
+                this.setState({
+                    answerArray: newAnswerArray
+                })
             })
-            .then(console.log(this.state.answerArray));
     }
 
     render() {
