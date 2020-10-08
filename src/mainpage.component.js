@@ -13,29 +13,87 @@ class MainPage extends React.Component {
     super(props);
 
     this.state = {
-      username: "",
-      password: ""
+      loggedIn: "You are not logged in"
     };
+
+    this.quickLogin = this.quickLogin.bind(this);
+    this.fetchLogin = this.quickLogin.bind(this);
+    console.log("hi");
+    
+
+    
 
     this.changeUser = this.changeUser.bind(this);
   }
 
-  changeUser(uName, pWord){
-    this.setState({
-      username: uName,
-      password: pWord
-    })
+  //logs in immediately if local storage contains a username and password
+  quickLogin(){
+    let uName = localStorage.getItem("username");
+    let pWord = localStorage.getItem("password");
 
-    console.log("uName");
-    console.log("pWord");
+    if(uName == null){
+      return;
+    }
+    
+    let fetchURL = "https://social.twgxe.net/login?username=" + uName + "&password=" + pWord;
+    fetch(fetchURL)
+      .then((response) => response.text())
+      .then((text) => {
+          console.log(text);
+
+          this.setState({
+              login_status: text
+          })
+          if(this.state.login_status === "granted"){
+            this.setState({
+              loggedIn: "You are logged in"
+            })
+              
+          }
+      })
+  }
+
+  componentDidMount(){
+    this.quickLogin();
+  }
+
+  fetchLogin(fetchURL){
+    
+    fetch(fetchURL)
+            .then((response) => response.text())
+            .then((text) => {
+                console.log(text);
+
+                this.setState({
+                    login_status: text
+                })
+                if(this.state.login_status === "granted"){
+                  this.setState({
+                    loggedIn: "You are logged in"
+                  })
+                    
+                }
+            })
+  }
+
+  changeUser(uName, pWord){
+    window.localStorage.setItem("username", uName);
+    window.localStorage.setItem("password", pWord);
+
+    this.setState({
+      loggedIn: "You are logged in"
+    })
   }
 
   render(){
     return (
       <Router>
-          <NavBar/>
+          <NavBar login_status = {this.state.loggedIn}/>
           
+          
+
           <div id = "content">
+            <p>{this.state.loggedIn}</p>
             <Route path="/user" component={Userpage} />
             <Route path="/signup" compontent={Signup}/>
             <Route path="/signup" component={Signup} />
