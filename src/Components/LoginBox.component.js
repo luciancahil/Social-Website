@@ -49,7 +49,7 @@ class LoginBox extends React.Component {
                 })
                 if(this.state.login_status === "granted"){
                     this.props.changeUser(userN, passW);
-                    window.history.pushState('page2', 'Title', '/home');
+                    window.location.href = "/home";
                     
                 }
             })
