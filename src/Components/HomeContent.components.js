@@ -73,11 +73,15 @@ componentDidMount(){
 
 
   setDownload(){
-    let bigInfo;    //stores the text that will get printed out
+    let bigInfo = "";    //stores the text that will get printed out
     let qArray = this.state.questionArray;
     let aArray = this.state.answerArray;
 
     for(let i = 0; i < qArray.length; i++){
+      console.log(bigInfo);
+      if(aArray[i] === undefined)
+        continue;
+
       bigInfo += qArray[i] + "\n";
       bigInfo += aArray[i] + "\n\n"
     }
