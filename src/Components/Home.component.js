@@ -24,10 +24,21 @@ class Home extends React.Component {
     }
 
     render() {
+
+        if(this.state.text === "You are not logged in"){
+            return <h2>You are not logged in</h2>
+        }
+
         return (
             <div id = "home">
-                <h2>{this.state.text}</h2>
-                <Content key = {this.props.login_status} login_status = {this.props.login_status}/>
+                <div id = "homeHeader">
+                    <h2>{this.state.text}</h2>
+                </div>
+                <div id = "homeEditButton">
+                    <button>Edit</button>
+                </div>
+                <br/>
+                <Content/>
             </div>
         );
 

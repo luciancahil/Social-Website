@@ -31,16 +31,12 @@ class HomeContent extends React.Component {
 
   
   render() {
-    if(this.props.login_status === "You are not logged in"){
-      return null;
-    }
-
     return (
-      <div id = "home content">
-        <h2>Home Content</h2>
+      <div id = "homeContent">
         <div id = "QnA">
           {this.state.indexArray.map(this.renderQuestion)}
         </div>
+        <br/>
       </div>
     );
   }

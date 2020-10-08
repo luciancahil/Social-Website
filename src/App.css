@@ -203,3 +203,16 @@ html, body, #root{
   width:100%;
   margin:auto;
 }
+
+#home div{
+  display: inline-block;
+}
+
+#home #homeEditButton{
+  float: right;
+  margin: 30px;
+}
+
+#home #QnA div{
+  display:inline;
+}
