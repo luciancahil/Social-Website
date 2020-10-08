@@ -6,8 +6,11 @@ class NavBar extends React.Component {
     super(props);
 
     this.state = {
-      search : ""
+      search : "",
+      leftText: "Sign in",
+      leftLink: "/login"
     };
+
 
     this.goSearch = this.goSearch.bind(this);
     this.updateSearch = this.updateSearch.bind(this);
@@ -37,7 +40,15 @@ class NavBar extends React.Component {
     return purged;
   }
 
-
+  componentDidMount(){
+    console.log("hi! " + this.props.login_status);
+    if(this.props.login_status === "You are logged in"){
+      this.setState({
+        leftText: "Sign out",
+      leftLink: "/signout"
+      })
+    }
+  }
 
   render() {
     return (
@@ -48,7 +59,7 @@ class NavBar extends React.Component {
             </div>
 
             <div id = "navlinks">
-                <a href = "/login">Sign in</a>
+                <a href = {this.state.leftLink}>{this.state.leftText}</a>
                 <a href = "/signup">Sign up</a>
             </div>
         </nav>

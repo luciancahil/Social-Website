@@ -18,11 +18,6 @@ class MainPage extends React.Component {
 
     this.quickLogin = this.quickLogin.bind(this);
     this.fetchLogin = this.quickLogin.bind(this);
-    console.log("hi");
-    
-
-    
-
     this.changeUser = this.changeUser.bind(this);
   }
 
@@ -39,7 +34,6 @@ class MainPage extends React.Component {
     fetch(fetchURL)
       .then((response) => response.text())
       .then((text) => {
-          console.log(text);
 
           this.setState({
               login_status: text
@@ -62,7 +56,6 @@ class MainPage extends React.Component {
     fetch(fetchURL)
             .then((response) => response.text())
             .then((text) => {
-                console.log(text);
 
                 this.setState({
                     login_status: text
@@ -86,9 +79,11 @@ class MainPage extends React.Component {
   }
 
   render(){
+    console.log(this.state.loggedIn);
+
     return (
       <Router>
-          <NavBar login_status = {this.state.loggedIn}/>
+          <NavBar login_status = {this.state.loggedIn} key = {this.state.loggedIn}/>
           
           
 
