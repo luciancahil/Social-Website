@@ -36,6 +36,7 @@ class UserPage extends React.Component {
                     <div className = "header">    
                         <h1>User Page</h1>
                     </div>  
+                    <button></button>
 
                     <Questions/>
 

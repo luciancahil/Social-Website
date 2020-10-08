@@ -16,9 +16,9 @@ class Questions extends React.Component {
         }
 
         this.renderQuestion = this.renderQuestion.bind(this);
-        this.download = this.download.bind(this);
-        this.setDownload = this.setDownload.bind(this);
+        this.updateServer = this.updateServer.bind(this);
         this.updateAnswers = this.updateAnswers.bind(this);
+        this.sendCommand = this.sendCommand.bind(this);
     }
 
     getIndexArray(array){
@@ -31,32 +31,75 @@ class Questions extends React.Component {
         return ints;
     }
 
-    renderQuestion = (index) => <Question key = {index} index = {index} q = {this.state.questionArray[index]} updateAnswers ={this.updateAnswers}/>
+    renderQuestion = (index) => <Question key = {index + " " + this.state.answerArray[index]} index = {index} q = {this.state.questionArray[index]} a = {this.state.answerArray[index]} updateAnswers ={this.updateAnswers}/>
 
 
     updateAnswers(index, text){
         this.state.answerArray[index] = text;
     }
 
-    download(content, filename, contentType){
-        if(!contentType) contentType = 'application/octet-stream';
-            var a = document.createElement('a');
-            var blob = new Blob([content], {'type':contentType});
-            a.href = window.URL.createObjectURL(blob);
-            a.download = filename;
-            a.click();
+
+    updateServer(){
+        let pass = localStorage.getItem("password");
+        let user = localStorage.getItem("username");
+        
+        let fetchURL;
+        //https://social.twgxe.net/addQnA?username=dummy&password=dummy1&question=what+is+your+name?&answer=dummy
+
+
+        for(let i = 0; i < this.state.answerArray.length; i++){
+            let question = this.state.questionArray[i];
+            let answer = this.state.answerArray[i];
+
+            if(answer === undefined){
+                continue;
+            }
+
+            fetchURL = "https://social.twgxe.net/addQnA?username=" + user + "&password=" + pass +  "&question=" + question + "&answer=" + answer;
+            this.sendCommand(fetchURL);
+        }
     }
 
+    async sendCommand(fetchURL){
+        await fetch(fetchURL)
+            .then((response) => response.text())
+            .then((text) => {
+                if(text !== "inserted"){
+                    console.log("error with " + fetchURL);
+                }
+            })
+    }
 
-    setDownload(){
-        for(let i = 0; i < this.state.questionArray.length; i++){
-            if(this.state.answerArray[i] != undefined){
-                let part = this.state.questionArray[i] + "\n" + this.state.answerArray[i] + "\n\n";
-                this.state.info += part;
-            }
-        }
+    // sets default Values of editing page with previous values
+    componentDidMount(){
+        let user = localStorage.getItem("username");
+        let pass = localStorage.getItem("password");
+        let QnAObj;
+        let question;
+        let answer;
+        let newAnswerArray = [];
+        let fetchURL = "https://social.twgxe.net/getQnA?username=" + user + "&password=" + pass;
 
-        this.download(this.state.info, "information.txt");
+        fetch(fetchURL)
+            .then((response) => response.text())
+            .then((text) => {
+                QnAObj = JSON.parse(text);
+                
+                console.log(QnAObj[this.state.questionArray[0]]);
+
+                for(let i = 0; i < this.state.questionArray.length; i++){
+                    question = this.state.questionArray[i];
+                    answer = QnAObj[question];
+
+                    if(answer !== undefined){
+                        newAnswerArray[i] = answer;
+                    }
+                }
+
+                this.setState({
+                    answerArray: newAnswerArray
+                })
+            })
     }
 
     render() {
@@ -67,7 +110,11 @@ class Questions extends React.Component {
                     {this.state.indexArray.map(this.renderQuestion)}
                 </div>
                 <br/>
-                <button onClick = {this.setDownload}>Download Information</button>
+                <div id = "EditButtons">
+                    <button onClick = {this.updateServer}>Save</button>
+
+                    <a href = "/home"><button>Cancel</button></a>
+                </div>
                 <br></br>
             </div>
         );
