@@ -1,8 +1,9 @@
 import React from 'react';
+import SignUpBox from './SignupBox.component';
 
 class Signup extends React.Component {
   render() {
-    return <h2>Signup Page</h2>;
+    return <SignUpBox/>;
   }
 }
 
