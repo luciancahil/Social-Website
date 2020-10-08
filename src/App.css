@@ -20,6 +20,10 @@
   color: white;
 }
 
+html, body, #app{
+  height: 100%
+}
+
 .App-link {
   color: #61dafb;
 }
@@ -111,9 +115,9 @@ html, body, #root{
   width: 80%;
   margin: auto;
   background-color: white;
-  height: 100%;
   margin-top: 0;
   overflow: auto;
+  padding: 10px;
 }
 
 

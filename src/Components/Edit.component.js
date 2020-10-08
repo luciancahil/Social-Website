@@ -1,6 +1,7 @@
 import React from 'react';
 import Questions from './Questions.component'
 
+//addQnA?username=dummy&password=dummy1&question=what+is+your+name?&answer=dummy
 
 class Edit extends React.Component {
     constructor(props){
