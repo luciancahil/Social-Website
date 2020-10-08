@@ -18,9 +18,12 @@ class Signup extends React.Component {
     }
 
     getClean(str){
-        let purged = str.replace("+", " ");
-        purged = purged.replace("%20", " ");
-        purged = purged.replace("%26", "&");
+        let purged = str.replaceAll("+", " ");
+        purged = purged.replaceAll("%20", " ");
+        purged = purged.replaceAll("%26", "&");
+        purged = purged.replaceAll("%22", "\"");
+        purged = purged.replaceAll("%3E", ">");
+        purged = purged.replaceAll("%3C", "<")
 
         this.setState({
             search: purged

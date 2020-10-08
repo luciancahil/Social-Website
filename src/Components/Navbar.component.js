@@ -34,8 +34,8 @@ class NavBar extends React.Component {
 
   // remove undesireable characters
   purge(str){
-    let purged = str.replace(" ", "+");
-    purged = purged.replace("&", "%26");
+    let purged = str.replaceAll(" ", "+");
+    purged = purged.replaceAll("&", "%26");
 
     return purged;
   }
