@@ -220,3 +220,7 @@ html, body, #root{
 #home #QnA div{
   display:inline;
 }
+
+#EditButtons button{
+  margin-right: 40px;
+}

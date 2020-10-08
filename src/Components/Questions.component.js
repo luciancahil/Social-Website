@@ -50,7 +50,6 @@ class Questions extends React.Component {
         for(let i = 0; i < this.state.answerArray.length; i++){
             let question = this.state.questionArray[i];
             let answer = this.state.answerArray[i];
-            console.log(question);
 
             if(answer === undefined){
                 continue;
@@ -79,7 +78,11 @@ class Questions extends React.Component {
                     {this.state.indexArray.map(this.renderQuestion)}
                 </div>
                 <br/>
-                <button onClick = {this.updateServer}>Download Information</button>
+                <div id = "EditButtons">
+                    <button onClick = {this.updateServer}>Save</button>
+
+                    <a href = "/home"><button>Cancel</button></a>
+                </div>
                 <br></br>
             </div>
         );
