@@ -32,7 +32,7 @@ class Signup extends React.Component {
     }
 
     render() {
-        return <h2>Searching for {this.state.search}</h2>;
+        return <h2>Searching for {this.state.search} (This part of the site isn't done yet!)</h2>;
     }
 }
 
