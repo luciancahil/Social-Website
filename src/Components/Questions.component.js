@@ -108,6 +108,10 @@ class Questions extends React.Component {
         return (
             <div id = "Question Section">
                 <h2>Questions:</h2>
+                <p>Hello there! Welcome to the editing page!</p>
+                <p>Here, you can fill out whatever questions you're tired of being asked over and over. Don't feel the need to fill it out all at once though; the website saves your info, so you can come back another time and finish it later, or just leave some questions unfinshed.</p>
+                <p>Your information will be encrypted using state of the art encryption with a secret key, so even the dude who made this website won't know your answers.</p>
+                <p>(Don't forget to hit the "save" button!)</p>
                 <div id = "Questions">
                     {this.state.indexArray.map(this.renderQuestion)}
                 </div>
