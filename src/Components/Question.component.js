@@ -18,7 +18,7 @@ class Question extends React.Component {
     render() {
         return (
             <div className = "Question">
-                <p>{this.props.q}</p>
+                <p><strong>{this.props.q}</strong></p>
                 <div className = "Input">
                     <input type = "text" onChange = {this.updateText} defaultValue = {this.props.a}></input>
                 </div>
