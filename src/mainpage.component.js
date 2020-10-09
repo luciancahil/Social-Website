@@ -8,6 +8,7 @@ import Searching from './Components/Searching.components';
 import Signout from './Components/Signout.component';
 import Home from './Components/Home.component'
 import Edit from './Components/Edit.component'
+import Landing from './Components/Landing.component';
 
 
 class MainPage extends React.Component { 
@@ -98,6 +99,7 @@ class MainPage extends React.Component {
           
 
           <div id = "content">
+          <Route path="/" exact render={(props) => <Landing/>} />
             <Route path="/user" component={Userpage} />
             <Route path="/signup" compontent={Signup}/>
             <Route path="/signup" component={Signup} />
