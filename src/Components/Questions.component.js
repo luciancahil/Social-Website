@@ -58,6 +58,8 @@ class Questions extends React.Component {
             fetchURL = "https://social.twgxe.net/addQnA?username=" + user + "&password=" + pass +  "&question=" + question + "&answer=" + answer;
             this.sendCommand(fetchURL);
         }
+
+        window.location.href = "/home";
     }
 
     async sendCommand(fetchURL){
